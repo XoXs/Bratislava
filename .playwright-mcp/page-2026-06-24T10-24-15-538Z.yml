@@ -1,0 +1,429 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - paragraph [ref=e6]: 09.07. - 13.07. 2026
+      - heading "Bratislava Reiseboard" [level=1] [ref=e7]
+    - generic "Reisegruppe" [ref=e8]:
+      - generic [ref=e9]: An
+      - generic [ref=e10]: St
+      - generic [ref=e11]: "+4"
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - generic [ref=e14]: An
+        - strong [ref=e15]: Andi
+        - img [ref=e16]
+      - button "Wechseln" [ref=e18] [cursor=pointer]
+      - button "Planpunkt" [ref=e19] [cursor=pointer]:
+        - img [ref=e20]
+        - text: Planpunkt
+  - generic [ref=e21]:
+    - generic [ref=e22]:
+      - img [ref=e24]
+      - generic [ref=e26]:
+        - strong [ref=e27]: "10"
+        - text: Planpunkte
+    - generic [ref=e28]:
+      - img [ref=e30]
+      - generic [ref=e32]:
+        - strong [ref=e33]: "0"
+        - text: Gebucht
+    - generic [ref=e34]:
+      - img [ref=e36]
+      - generic [ref=e38]:
+        - strong [ref=e39]: "0"
+        - text: Likes
+    - generic [ref=e40]:
+      - img [ref=e42]
+      - generic [ref=e44]:
+        - strong [ref=e45]: 162 €
+        - text: Geschätzt p.P.
+  - generic [ref=e47]:
+    - article [ref=e48]:
+      - generic [ref=e49]:
+        - generic [ref=e50]:
+          - generic [ref=e51]: Mittwoch
+          - strong [ref=e52]: 09.07.
+        - button "Aktivität hinzufügen" [ref=e53] [cursor=pointer]:
+          - img [ref=e54]
+      - generic [ref=e57]: Vormittag
+      - generic [ref=e60]: Nachmittag
+      - generic [ref=e61]:
+        - generic [ref=e63]: Abend
+        - generic [ref=e64]:
+          - generic [ref=e65]:
+            - generic [ref=e66]:
+              - img [ref=e68]
+              - generic [ref=e75]: ✈ Reise
+              - generic [ref=e76]: ab 18:00
+            - button "Aktivität liken" [ref=e77] [cursor=pointer]:
+              - img [ref=e78]
+          - heading "Ankunft in Bratislava" [level=3] [ref=e80]
+          - paragraph [ref=e81]: Ankommen, Unterkunft beziehen, erster Spaziergang durch die Altstadt.
+          - link "Bratislava Old Town" [ref=e82] [cursor=pointer]:
+            - /url: https://www.google.com/maps/search/?api=1&query=Bratislava+Old+Town
+            - img [ref=e83]
+            - text: Bratislava Old Town
+          - iframe [ref=e86]:
+            
+          - generic [ref=e87]:
+            - generic [ref=e88]: Must-have
+            - generic [ref=e89]: 0 € p.P.
+            - generic [ref=e90]: Offen
+          - generic [ref=e92]: Noch keine Likes
+          - paragraph [ref=e93]: Check-in-Zeit und Gepäckoptionen ergänzen.
+          - generic [ref=e94]:
+            - button "Bearbeiten" [ref=e95] [cursor=pointer]:
+              - img [ref=e96]
+            - button "Duplizieren" [ref=e99] [cursor=pointer]:
+              - img [ref=e100]
+            - button "Als gebucht markieren" [ref=e103] [cursor=pointer]:
+              - img [ref=e104]
+            - link "Google Maps öffnen" [ref=e106] [cursor=pointer]:
+              - /url: https://www.google.com/maps/search/?api=1&query=Bratislava+Old+Town
+              - img [ref=e107]
+            - button "Löschen" [ref=e111] [cursor=pointer]:
+              - img [ref=e112]
+        - generic [ref=e115]:
+          - generic [ref=e116]:
+            - generic [ref=e117]:
+              - img [ref=e119]
+              - generic [ref=e126]: ● Bier & Bars
+              - generic [ref=e127]: 21:30
+            - button "Aktivität liken" [ref=e128] [cursor=pointer]:
+              - img [ref=e129]
+          - heading "Erstes Bier in der Altstadt" [level=3] [ref=e131]
+          - paragraph [ref=e132]: Entspannter Start mit slowakischem Bier.
+          - link "Bratislavský Meštiansky Pivovar" [ref=e133] [cursor=pointer]:
+            - /url: https://www.google.com/maps/search/?api=1&query=Bratislavsky+Mestiansky+Pivovar+Bratislava
+            - img [ref=e134]
+            - text: Bratislavský Meštiansky Pivovar
+          - iframe [ref=e137]:
+            
+          - generic [ref=e138]:
+            - generic [ref=e139]: Optional
+            - generic [ref=e140]: 12 € p.P.
+            - generic [ref=e141]: Offen
+          - generic [ref=e143]: Noch keine Likes
+          - generic [ref=e144]:
+            - button "Bearbeiten" [ref=e145] [cursor=pointer]:
+              - img [ref=e146]
+            - button "Duplizieren" [ref=e149] [cursor=pointer]:
+              - img [ref=e150]
+            - button "Als gebucht markieren" [ref=e153] [cursor=pointer]:
+              - img [ref=e154]
+            - link "Google Maps öffnen" [ref=e156] [cursor=pointer]:
+              - /url: https://www.google.com/maps/search/?api=1&query=Bratislavsky+Mestiansky+Pivovar+Bratislava
+              - img [ref=e157]
+            - button "Löschen" [ref=e161] [cursor=pointer]:
+              - img [ref=e162]
+    - article [ref=e165]:
+      - generic [ref=e166]:
+        - generic [ref=e167]:
+          - generic [ref=e168]: Donnerstag
+          - strong [ref=e169]: 10.07.
+        - button "Aktivität hinzufügen" [ref=e170] [cursor=pointer]:
+          - img [ref=e171]
+      - generic [ref=e172]:
+        - generic [ref=e174]: Vormittag
+        - generic [ref=e175]:
+          - generic [ref=e176]:
+            - generic [ref=e177]:
+              - img [ref=e179]
+              - generic [ref=e186]: ◆ Kultur
+              - generic [ref=e187]: 10:00-12:00
+            - button "Aktivität liken" [ref=e188] [cursor=pointer]:
+              - img [ref=e189]
+          - heading "Bratislava Burg" [level=3] [ref=e191]
+          - paragraph [ref=e192]: Kultur, Aussicht und kurzer Stadtrundgang.
+          - link "Bratislava Castle" [ref=e193] [cursor=pointer]:
+            - /url: https://www.google.com/maps/search/?api=1&query=Bratislava+Castle
+            - img [ref=e194]
+            - text: Bratislava Castle
+          - iframe [ref=e197]:
+            
+          - generic [ref=e198]:
+            - generic [ref=e199]: Must-have
+            - generic [ref=e200]: 8 € p.P.
+            - generic [ref=e201]: Offen
+          - generic [ref=e203]: Noch keine Likes
+          - paragraph [ref=e204]: Gute Fotostelle einplanen.
+          - generic [ref=e205]:
+            - button "Bearbeiten" [ref=e206] [cursor=pointer]:
+              - img [ref=e207]
+            - button "Duplizieren" [ref=e210] [cursor=pointer]:
+              - img [ref=e211]
+            - button "Als gebucht markieren" [ref=e214] [cursor=pointer]:
+              - img [ref=e215]
+            - link "Google Maps öffnen" [ref=e217] [cursor=pointer]:
+              - /url: https://www.google.com/maps/search/?api=1&query=Bratislava+Castle
+              - img [ref=e218]
+            - button "Löschen" [ref=e222] [cursor=pointer]:
+              - img [ref=e223]
+      - generic [ref=e226]:
+        - generic [ref=e228]: Nachmittag
+        - generic [ref=e229]:
+          - generic [ref=e230]:
+            - generic [ref=e231]:
+              - img [ref=e233]
+              - generic [ref=e240]: ◆ Kultur
+              - generic [ref=e241]: 12:30-14:30
+            - button "Aktivität liken" [ref=e242] [cursor=pointer]:
+              - img [ref=e243]
+          - heading "Altstadt, Michaelertor und St.-Martins-Dom" [level=3] [ref=e245]
+          - paragraph [ref=e246]: Kompakte Altstadt-Runde mit den wichtigsten Spots.
+          - link "Michael’s Gate Bratislava" [ref=e247] [cursor=pointer]:
+            - /url: https://www.google.com/maps/search/?api=1&query=Michael%27s+Gate+Bratislava
+            - img [ref=e248]
+            - text: Michael’s Gate Bratislava
+          - iframe [ref=e251]:
+            
+          - generic [ref=e252]:
+            - generic [ref=e253]: Must-have
+            - generic [ref=e254]: 0 € p.P.
+            - generic [ref=e255]: Offen
+          - generic [ref=e257]: Noch keine Likes
+          - generic [ref=e258]:
+            - button "Bearbeiten" [ref=e259] [cursor=pointer]:
+              - img [ref=e260]
+            - button "Duplizieren" [ref=e263] [cursor=pointer]:
+              - img [ref=e264]
+            - button "Als gebucht markieren" [ref=e267] [cursor=pointer]:
+              - img [ref=e268]
+            - link "Google Maps öffnen" [ref=e270] [cursor=pointer]:
+              - /url: https://www.google.com/maps/search/?api=1&query=Michael%27s+Gate+Bratislava
+              - img [ref=e271]
+            - button "Löschen" [ref=e275] [cursor=pointer]:
+              - img [ref=e276]
+      - generic [ref=e279]:
+        - generic [ref=e281]: Abend
+        - generic [ref=e282]:
+          - generic [ref=e283]:
+            - generic [ref=e284]:
+              - img [ref=e286]
+              - generic [ref=e293]: ✦ Special Activity
+              - generic [ref=e294]: 18:30
+            - button "Aktivität liken" [ref=e295] [cursor=pointer]:
+              - img [ref=e296]
+          - heading "UFO Tower / UFO Skywalk" [level=3] [ref=e298]
+          - paragraph [ref=e299]: Aussicht über Bratislava und optional Skywalk außen am UFO Tower.
+          - link "UFO Observation Deck" [ref=e300] [cursor=pointer]:
+            - /url: https://www.google.com/maps/search/?api=1&query=UFO+Observation+Deck+Bratislava
+            - img [ref=e301]
+            - text: UFO Observation Deck
+          - iframe [ref=e304]:
+            
+          - generic [ref=e305]:
+            - generic [ref=e306]: Optional
+            - generic [ref=e307]: 15 € p.P.
+            - generic [ref=e308]: Angefragt
+          - generic [ref=e310]: Noch keine Likes
+          - paragraph [ref=e311]: Skywalk vorab prüfen.
+          - generic [ref=e312]:
+            - button "Bearbeiten" [ref=e313] [cursor=pointer]:
+              - img [ref=e314]
+            - button "Duplizieren" [ref=e317] [cursor=pointer]:
+              - img [ref=e318]
+            - button "Als gebucht markieren" [ref=e321] [cursor=pointer]:
+              - img [ref=e322]
+            - link "Google Maps öffnen" [ref=e324] [cursor=pointer]:
+              - /url: https://www.google.com/maps/search/?api=1&query=UFO+Observation+Deck+Bratislava
+              - img [ref=e325]
+            - button "Löschen" [ref=e329] [cursor=pointer]:
+              - img [ref=e330]
+    - article [ref=e333]:
+      - generic [ref=e334]:
+        - generic [ref=e335]:
+          - generic [ref=e336]: Freitag
+          - strong [ref=e337]: 11.07.
+        - button "Aktivität hinzufügen" [ref=e338] [cursor=pointer]:
+          - img [ref=e339]
+      - generic [ref=e340]:
+        - generic [ref=e342]: Vormittag
+        - generic [ref=e343]:
+          - generic [ref=e344]:
+            - generic [ref=e345]:
+              - img [ref=e347]
+              - generic [ref=e354]: ✦ Special Activity
+              - generic [ref=e355]: 10:30-12:30
+            - button "Aktivität liken" [ref=e356] [cursor=pointer]:
+              - img [ref=e357]
+          - heading "Bunker-Tour" [level=3] [ref=e359]
+          - paragraph [ref=e360]: Historische Bunkeranlage an der ehemaligen Grenze. Keine Waffen-Aktivität, sondern Geschichte und Kalter Krieg.
+          - link "Bunker B-S 8 Cemetery" [ref=e361] [cursor=pointer]:
+            - /url: https://www.google.com/maps/search/?api=1&query=Bunker+B-S+8+Cemetery+Bratislava
+            - img [ref=e362]
+            - text: Bunker B-S 8 Cemetery
+          - iframe [ref=e365]:
+            
+          - generic [ref=e366]:
+            - generic [ref=e367]: Optional
+            - generic [ref=e368]: 12 € p.P.
+            - generic [ref=e369]: Offen
+          - generic [ref=e371]: Noch keine Likes
+          - generic [ref=e372]:
+            - button "Bearbeiten" [ref=e373] [cursor=pointer]:
+              - img [ref=e374]
+            - button "Duplizieren" [ref=e377] [cursor=pointer]:
+              - img [ref=e378]
+            - button "Als gebucht markieren" [ref=e381] [cursor=pointer]:
+              - img [ref=e382]
+            - link "Google Maps öffnen" [ref=e384] [cursor=pointer]:
+              - /url: https://www.google.com/maps/search/?api=1&query=Bunker+B-S+8+Cemetery+Bratislava
+              - img [ref=e385]
+            - button "Löschen" [ref=e389] [cursor=pointer]:
+              - img [ref=e390]
+      - generic [ref=e393]:
+        - generic [ref=e395]: Nachmittag
+        - generic [ref=e396]:
+          - generic [ref=e397]:
+            - generic [ref=e398]:
+              - img [ref=e400]
+              - generic [ref=e407]: ◐ Aussicht
+              - generic [ref=e408]: 15:00-18:00
+            - button "Aktivität liken" [ref=e409] [cursor=pointer]:
+              - img [ref=e410]
+          - heading "Devín Burg" [level=3] [ref=e412]
+          - paragraph [ref=e413]: Historische Burg am Zusammenfluss von Donau und March.
+          - link "Devín Castle" [ref=e414] [cursor=pointer]:
+            - /url: https://www.google.com/maps/search/?api=1&query=Devin+Castle+Bratislava
+            - img [ref=e415]
+            - text: Devín Castle
+          - iframe [ref=e418]:
+            
+          - generic [ref=e419]:
+            - generic [ref=e420]: Must-have
+            - generic [ref=e421]: 10 € p.P.
+            - generic [ref=e422]: Offen
+          - generic [ref=e424]: Noch keine Likes
+          - paragraph [ref=e425]: Anfahrt per Bus oder Bolt vergleichen.
+          - generic [ref=e426]:
+            - button "Bearbeiten" [ref=e427] [cursor=pointer]:
+              - img [ref=e428]
+            - button "Duplizieren" [ref=e431] [cursor=pointer]:
+              - img [ref=e432]
+            - button "Als gebucht markieren" [ref=e435] [cursor=pointer]:
+              - img [ref=e436]
+            - link "Google Maps öffnen" [ref=e438] [cursor=pointer]:
+              - /url: https://www.google.com/maps/search/?api=1&query=Devin+Castle+Bratislava
+              - img [ref=e439]
+            - button "Löschen" [ref=e443] [cursor=pointer]:
+              - img [ref=e444]
+      - generic [ref=e447]:
+        - generic [ref=e449]: Abend
+        - generic [ref=e450]:
+          - generic [ref=e451]:
+            - generic [ref=e452]:
+              - img [ref=e454]
+              - generic [ref=e461]: ● Bier & Bars
+              - generic [ref=e462]: 20:00
+            - button "Aktivität liken" [ref=e463] [cursor=pointer]:
+              - img [ref=e464]
+          - heading "Craft Beer Abend" [level=3] [ref=e466]
+          - paragraph [ref=e467]: Kleine selbst organisierte Craft-Beer-Tour.
+          - link "Bratislava city center craft beer" [ref=e468] [cursor=pointer]:
+            - /url: https://www.google.com/maps/search/?api=1&query=Craft+Beer+Bratislava
+            - img [ref=e469]
+            - text: Bratislava city center craft beer
+          - iframe [ref=e472]:
+            
+          - generic [ref=e473]:
+            - generic [ref=e474]: Must-have
+            - generic [ref=e475]: 25 € p.P.
+            - generic [ref=e476]: Offen
+          - generic [ref=e478]: Noch keine Likes
+          - paragraph [ref=e479]: 2-3 Bars auswählen, nicht zu viel laufen.
+          - generic [ref=e480]:
+            - button "Bearbeiten" [ref=e481] [cursor=pointer]:
+              - img [ref=e482]
+            - button "Duplizieren" [ref=e485] [cursor=pointer]:
+              - img [ref=e486]
+            - button "Als gebucht markieren" [ref=e489] [cursor=pointer]:
+              - img [ref=e490]
+            - link "Google Maps öffnen" [ref=e492] [cursor=pointer]:
+              - /url: https://www.google.com/maps/search/?api=1&query=Craft+Beer+Bratislava
+              - img [ref=e493]
+            - button "Löschen" [ref=e497] [cursor=pointer]:
+              - img [ref=e498]
+    - article [ref=e501]:
+      - generic [ref=e502]:
+        - generic [ref=e503]:
+          - generic [ref=e504]: Samstag
+          - strong [ref=e505]: 12.07.
+        - button "Aktivität hinzufügen" [ref=e506] [cursor=pointer]:
+          - img [ref=e507]
+      - generic [ref=e510]: Vormittag
+      - generic [ref=e511]:
+        - generic [ref=e513]: Nachmittag
+        - generic [ref=e514]:
+          - generic [ref=e515]:
+            - generic [ref=e516]:
+              - img [ref=e518]
+              - generic [ref=e525]: ✦ Special Activity
+              - generic [ref=e526]: 16:00
+            - button "Aktivität liken" [ref=e527] [cursor=pointer]:
+              - img [ref=e528]
+          - heading "Beer Bike" [level=3] [ref=e530]
+          - paragraph [ref=e531]: Gemeinsame Beer-Bike-Tour durch Bratislava.
+          - link "Bratislava Beer Bike" [ref=e532] [cursor=pointer]:
+            - /url: https://www.google.com/maps/search/?api=1&query=Bratislava+Beer+Bike
+            - img [ref=e533]
+            - text: Bratislava Beer Bike
+          - iframe [ref=e536]:
+            
+          - generic [ref=e537]:
+            - generic [ref=e538]: Optional
+            - generic [ref=e539]: 35 € p.P.
+            - generic [ref=e540]: Angefragt
+          - generic [ref=e542]: Noch keine Likes
+          - paragraph [ref=e543]: Anbieter und Mindestanzahl klären.
+          - generic [ref=e544]:
+            - button "Bearbeiten" [ref=e545] [cursor=pointer]:
+              - img [ref=e546]
+            - button "Duplizieren" [ref=e549] [cursor=pointer]:
+              - img [ref=e550]
+            - button "Als gebucht markieren" [ref=e553] [cursor=pointer]:
+              - img [ref=e554]
+            - link "Google Maps öffnen" [ref=e556] [cursor=pointer]:
+              - /url: https://www.google.com/maps/search/?api=1&query=Bratislava+Beer+Bike
+              - img [ref=e557]
+            - button "Löschen" [ref=e561] [cursor=pointer]:
+              - img [ref=e562]
+      - generic [ref=e565]:
+        - generic [ref=e567]: Abend
+        - generic [ref=e568]:
+          - generic [ref=e569]:
+            - generic [ref=e570]:
+              - img [ref=e572]
+              - generic [ref=e579]: ✧ Nachtleben
+              - generic [ref=e580]: 19:30-offen
+            - button "Aktivität liken" [ref=e581] [cursor=pointer]:
+              - img [ref=e582]
+          - heading "Abschlussabend" [level=3] [ref=e584]
+          - paragraph [ref=e585]: Gutes Essen, Bars und letzter gemeinsamer Abend.
+          - link "Bratislava Old Town" [ref=e586] [cursor=pointer]:
+            - /url: https://www.google.com/maps/search/?api=1&query=Bars+Bratislava+Old+Town
+            - img [ref=e587]
+            - text: Bratislava Old Town
+          - iframe [ref=e590]:
+            
+          - generic [ref=e591]:
+            - generic [ref=e592]: Must-have
+            - generic [ref=e593]: 45 € p.P.
+            - generic [ref=e594]: Offen
+          - generic [ref=e596]: Noch keine Likes
+          - paragraph [ref=e597]: Restaurant fürs Dinner vormerken.
+          - generic [ref=e598]:
+            - button "Bearbeiten" [ref=e599] [cursor=pointer]:
+              - img [ref=e600]
+            - button "Duplizieren" [ref=e603] [cursor=pointer]:
+              - img [ref=e604]
+            - button "Als gebucht markieren" [ref=e607] [cursor=pointer]:
+              - img [ref=e608]
+            - link "Google Maps öffnen" [ref=e610] [cursor=pointer]:
+              - /url: https://www.google.com/maps/search/?api=1&query=Bars+Bratislava+Old+Town
+              - img [ref=e611]
+            - button "Löschen" [ref=e615] [cursor=pointer]:
+              - img [ref=e616]
+  - button "History anzeigen" [ref=e620] [cursor=pointer]:
+    - img [ref=e621]
+    - text: History anzeigen

@@ -1,0 +1,23 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - paragraph [ref=e5]: Bratislava Reiseboard
+    - heading "Wer bin ich?" [level=1] [ref=e6]
+    - generic [ref=e7]:
+      - button "An Andi" [ref=e8] [cursor=pointer]:
+        - generic [ref=e9]: An
+        - text: Andi
+      - button "St Steffen" [ref=e10] [cursor=pointer]:
+        - generic [ref=e11]: St
+        - text: Steffen
+      - button "Ni Niko" [ref=e12] [cursor=pointer]:
+        - generic [ref=e13]: Ni
+        - text: Niko
+      - button "Ma Markus" [ref=e14] [cursor=pointer]:
+        - generic [ref=e15]: Ma
+        - text: Markus
+      - button "St Stefan" [ref=e16] [cursor=pointer]:
+        - generic [ref=e17]: St
+        - text: Stefan
+      - button "Ph Philipp" [ref=e18] [cursor=pointer]:
+        - generic [ref=e19]: Ph
+        - text: Philipp
