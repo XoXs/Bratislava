@@ -1,4 +1,4 @@
-export type DayId = '2026-07-09' | '2026-07-10' | '2026-07-11' | '2026-07-12' | '2026-07-13';
+export type DayId = '2026-07-09' | '2026-07-10' | '2026-07-11' | '2026-07-12';
 
 export type Timeslot = 'Vormittag' | 'Nachmittag' | 'Abend';
 

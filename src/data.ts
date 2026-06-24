@@ -5,7 +5,6 @@ export const days: Array<{ id: DayId; label: string; short: string; accent: stri
   { id: '2026-07-10', label: 'Freitag, 10.07.', short: 'Fr 10.07.', accent: '#34a0a4' },
   { id: '2026-07-11', label: 'Samstag, 11.07.', short: 'Sa 11.07.', accent: '#6c8ae4' },
   { id: '2026-07-12', label: 'Sonntag, 12.07.', short: 'So 12.07.', accent: '#d676b8' },
-  { id: '2026-07-13', label: 'Montag, 13.07.', short: 'Mo 13.07.', accent: '#8a9a5b' },
 ];
 
 export const timeslots: Timeslot[] = ['Vormittag', 'Nachmittag', 'Abend'];
