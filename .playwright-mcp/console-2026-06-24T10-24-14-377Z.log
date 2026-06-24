@@ -6,3 +6,5 @@
 [ 1367788ms] [ERROR] WebSocket connection to 'ws://localhost:5173/' failed:  @ http://localhost:5173/@vite/client:1034
 [ 1608802ms] [ERROR] WebSocket connection to 'ws://localhost:5173/' failed:  @ http://localhost:5173/@vite/client:1034
 [17639039ms] [ERROR] WebSocket connection to 'ws://localhost:5173/' failed:  @ http://localhost:5173/@vite/client:1034
+[17880052ms] [ERROR] WebSocket connection to 'ws://localhost:5173/' failed:  @ http://localhost:5173/@vite/client:1034
+[18121048ms] [ERROR] WebSocket connection to 'ws://localhost:5173/' failed:  @ http://localhost:5173/@vite/client:1034

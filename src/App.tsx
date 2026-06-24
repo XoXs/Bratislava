@@ -178,6 +178,11 @@ const timeslotIcons = {
   Abend: Moon,
 } satisfies Record<Timeslot, typeof Sunrise>;
 
+const getDayIdFromHash = (): DayId => {
+  const hashDayId = window.location.hash.replace('#day-', '');
+  return days.some((day) => day.id === hashDayId) ? (hashDayId as DayId) : days[0].id;
+};
+
 export function App() {
   const stored = readStoredState();
   const storedHistory = normalizeHistory(stored?.history);
@@ -415,18 +420,47 @@ function PlannerBoard({
   patchActivity: (id: string, patch: Partial<Activity>) => void;
   recordHistory: (action: string, detail: string) => void;
 }) {
+  const [activeDayId, setActiveDayId] = useState<DayId>(getDayIdFromHash);
+
+  useEffect(() => {
+    const syncActiveDay = () => setActiveDayId(getDayIdFromHash());
+    window.addEventListener('hashchange', syncActiveDay);
+    return () => window.removeEventListener('hashchange', syncActiveDay);
+  }, []);
+
+  const selectDay = (dayId: DayId) => {
+    setActiveDayId(dayId);
+    window.history.replaceState(null, '', `#day-${dayId}`);
+  };
+
   return (
     <section className="board-wrap">
-      <div className="mobile-day-nav">
+      <div className="mobile-day-nav" role="tablist" aria-label="Reisetage">
         {days.map((day) => (
-          <a key={day.id} href={`#day-${day.id}`}>
+          <button
+            key={day.id}
+            id={`tab-${day.id}`}
+            className={day.id === activeDayId ? 'is-active' : ''}
+            type="button"
+            role="tab"
+            aria-selected={day.id === activeDayId}
+            aria-controls={`day-${day.id}`}
+            onClick={() => selectDay(day.id)}
+          >
             {day.short}
-          </a>
+          </button>
         ))}
       </div>
       <div className="board">
         {days.map((day) => (
-          <article className="day-column" id={`day-${day.id}`} key={day.id} style={{ '--day': day.accent } as CSSProperties}>
+          <article
+            className={`day-column ${day.id === activeDayId ? 'is-active' : ''}`}
+            id={`day-${day.id}`}
+            key={day.id}
+            role="tabpanel"
+            aria-labelledby={`tab-${day.id}`}
+            style={{ '--day': day.accent } as CSSProperties}
+          >
             <div className="day-header">
               <div>
                 <small>{day.label.split(',')[0]}</small>
