@@ -225,7 +225,13 @@ h2 {
   border: 1px solid rgba(23, 32, 41, 0.12);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.74);
+  color: #172029;
   box-shadow: 0 10px 24px rgba(28, 38, 48, 0.06);
+}
+
+.user-pill:hover {
+  border-color: rgba(37, 143, 132, 0.32);
+  background: white;
 }
 
 .user-pill strong {
@@ -1108,6 +1114,26 @@ textarea:focus {
   .wide-card,
   .modal-header {
     flex-direction: column;
+  }
+
+  .modal-backdrop {
+    padding: 10px;
+  }
+
+  .modal {
+    max-height: 94vh;
+    padding: 14px;
+  }
+
+  .form-grid label {
+    font-size: 0.76rem;
+  }
+
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+    font-size: 16px;
   }
 
   .beer-row,

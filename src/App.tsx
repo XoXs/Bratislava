@@ -461,11 +461,11 @@ export function App() {
           ))}
         </div>
         <div className="top-actions">
-          <div className="user-pill">
+          <button className="user-pill" type="button" title="Nutzer wechseln" onClick={() => setCurrentUser(null)}>
             <Avatar name={currentUser} names={participants} />
             <strong>{currentUser}</strong>
             <ChevronDown size={13} />
-          </div>
+          </button>
           <button
             className="ghost-button"
             onClick={() => {
