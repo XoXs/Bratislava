@@ -25,7 +25,7 @@ import {
   Sunrise,
   Trash2,
 } from 'lucide-react';
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 import type { CSSProperties, ReactNode } from 'react';
 
 type Draft = Omit<Activity, 'id' | 'booked' | 'favorite'> & { id?: string; booked?: boolean; favorite?: boolean };
@@ -36,8 +36,18 @@ type HistoryEntry = {
   detail: string;
   timestamp: string;
 };
+type TripState = {
+  participants: string[];
+  activities: Activity[];
+  history: HistoryEntry[];
+};
 
 const storageKey = 'bratislava-trip-planner-v2';
+const userStorageKey = 'bratislava-trip-planner-current-user';
+const tripStateId = 'bratislava';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const sharedStorageEnabled = Boolean(supabaseUrl && supabaseAnonKey);
 
 const defaultDraft: Draft = {
   title: '',
@@ -62,6 +72,73 @@ const readStoredState = () => {
     return raw ? JSON.parse(raw) : null;
   } catch {
     return null;
+  }
+};
+
+const readStoredUser = () => {
+  try {
+    return localStorage.getItem(userStorageKey);
+  } catch {
+    return null;
+  }
+};
+
+const getInitialTripState = (stored: Partial<TripState> | null | undefined): TripState => {
+  const participants = stored?.participants ?? defaultParticipants;
+  const history = normalizeHistory(stored?.history);
+  const likedActivityTitles = new Set(
+    history
+      .filter((entry) => entry.action === 'Planpunkt geliked' || entry.action === 'Like entfernt')
+      .map((entry) => entry.detail),
+  );
+
+  return {
+    participants,
+    activities: normalizeActivities(stored?.activities ?? seedActivities, participants, likedActivityTitles),
+    history,
+  };
+};
+
+const supabaseHeaders = () => ({
+  apikey: supabaseAnonKey ?? '',
+  Authorization: `Bearer ${supabaseAnonKey ?? ''}`,
+  'Content-Type': 'application/json',
+});
+
+const loadSharedTripState = async (): Promise<TripState | null> => {
+  if (!sharedStorageEnabled) return null;
+
+  const response = await fetch(
+    `${supabaseUrl}/rest/v1/trip_state?id=eq.${tripStateId}&select=state&limit=1`,
+    { headers: supabaseHeaders() },
+  );
+
+  if (!response.ok) {
+    throw new Error(`Shared state konnte nicht geladen werden: ${response.status}`);
+  }
+
+  const rows = (await response.json()) as Array<{ state?: Partial<TripState> }>;
+  return rows[0]?.state ? getInitialTripState(rows[0].state) : null;
+};
+
+const saveSharedTripState = async (state: TripState) => {
+  if (!sharedStorageEnabled) return;
+
+  const response = await fetch(`${supabaseUrl}/rest/v1/trip_state`, {
+    method: 'POST',
+    headers: {
+      ...supabaseHeaders(),
+      Prefer: 'resolution=merge-duplicates',
+    },
+    body: JSON.stringify({
+      id: tripStateId,
+      state,
+      updated_at: new Date().toISOString(),
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Shared state konnte nicht gespeichert werden: ${response.status}`);
   }
 };
 
@@ -185,23 +262,96 @@ const getDayIdFromHash = (): DayId => {
 
 export function App() {
   const stored = readStoredState();
-  const storedHistory = normalizeHistory(stored?.history);
-  const likedActivityTitles = new Set(
-    storedHistory
-      .filter((entry) => entry.action === 'Planpunkt geliked' || entry.action === 'Like entfernt')
-      .map((entry) => entry.detail),
-  );
-  const [currentUser, setCurrentUser] = useState<string | null>(stored?.currentUser ?? null);
-  const [participants, setParticipants] = useState<string[]>(stored?.participants ?? defaultParticipants);
-  const [activities, setActivities] = useState<Activity[]>(normalizeActivities(stored?.activities ?? seedActivities, stored?.participants ?? defaultParticipants, likedActivityTitles));
-  const [history, setHistory] = useState<HistoryEntry[]>(storedHistory);
+  const initialTripState = getInitialTripState(stored);
+  const [currentUser, setCurrentUser] = useState<string | null>(readStoredUser() ?? stored?.currentUser ?? null);
+  const [participants, setParticipants] = useState<string[]>(initialTripState.participants);
+  const [activities, setActivities] = useState<Activity[]>(initialTripState.activities);
+  const [history, setHistory] = useState<HistoryEntry[]>(initialTripState.history);
+  const [sharedStateLoaded, setSharedStateLoaded] = useState(!sharedStorageEnabled);
   const [showHistory, setShowHistory] = useState(false);
   const [editing, setEditing] = useState<Draft | null>(null);
   const [draggedId, setDraggedId] = useState<string | null>(null);
+  const hasHydratedSharedState = useRef(false);
 
   useEffect(() => {
     localStorage.setItem(storageKey, JSON.stringify({ currentUser, participants, activities, history }));
+    if (currentUser) {
+      localStorage.setItem(userStorageKey, currentUser);
+    } else {
+      localStorage.removeItem(userStorageKey);
+    }
   }, [currentUser, participants, activities, history]);
+
+  useEffect(() => {
+    if (!sharedStorageEnabled) return;
+
+    let cancelled = false;
+
+    const hydrateSharedState = async () => {
+      try {
+        const sharedState = await loadSharedTripState();
+        if (cancelled) return;
+
+        if (sharedState) {
+          setParticipants(sharedState.participants);
+          setActivities(sharedState.activities);
+          setHistory(sharedState.history);
+        } else {
+          await saveSharedTripState({ participants, activities, history });
+        }
+      } catch (error) {
+        console.warn(error);
+      } finally {
+        if (!cancelled) {
+          hasHydratedSharedState.current = true;
+          setSharedStateLoaded(true);
+        }
+      }
+    };
+
+    hydrateSharedState();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!sharedStorageEnabled || !sharedStateLoaded || !hasHydratedSharedState.current) return;
+
+    const saveTimer = window.setTimeout(() => {
+      saveSharedTripState({ participants, activities, history }).catch((error) => console.warn(error));
+    }, 500);
+
+    return () => window.clearTimeout(saveTimer);
+  }, [participants, activities, history, sharedStateLoaded]);
+
+  useEffect(() => {
+    if (!sharedStorageEnabled || !sharedStateLoaded) return;
+
+    const refreshSharedState = () => {
+      loadSharedTripState()
+        .then((sharedState) => {
+          if (!sharedState) return;
+          setParticipants(sharedState.participants);
+          setActivities(sharedState.activities);
+          setHistory(sharedState.history);
+        })
+        .catch((error) => console.warn(error));
+    };
+
+    const refreshSharedStateWhenVisible = () => {
+      if (document.visibilityState === 'visible') refreshSharedState();
+    };
+
+    window.addEventListener('focus', refreshSharedState);
+    document.addEventListener('visibilitychange', refreshSharedStateWhenVisible);
+
+    return () => {
+      window.removeEventListener('focus', refreshSharedState);
+      document.removeEventListener('visibilitychange', refreshSharedStateWhenVisible);
+    };
+  }, [sharedStateLoaded]);
 
   const bookedCount = activities.filter((activity) => activity.booked).length;
   const likeCount = activities.reduce((sum, activity) => sum + activity.likedBy.length, 0);
