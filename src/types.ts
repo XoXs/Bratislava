@@ -34,4 +34,5 @@ export type Activity = {
   priority: Priority;
   booked: boolean;
   favorite: boolean;
+  createdBy?: string;
 };

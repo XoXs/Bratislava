@@ -91,10 +91,15 @@ const getInitialTripState = (stored: Partial<TripState> | null | undefined): Tri
       .filter((entry) => entry.action === 'Planpunkt geliked' || entry.action === 'Like entfernt')
       .map((entry) => entry.detail),
   );
+  const createdActivityUsers = new Map<string, string>();
+  history
+    .filter((entry) => entry.action === 'Planpunkt hinzugefügt')
+    .reverse()
+    .forEach((entry) => createdActivityUsers.set(entry.detail, entry.user));
 
   return {
     participants,
-    activities: normalizeActivities(stored?.activities ?? seedActivities, participants, likedActivityTitles),
+    activities: normalizeActivities(stored?.activities ?? seedActivities, participants, likedActivityTitles, createdActivityUsers),
     history,
   };
 };
@@ -164,11 +169,17 @@ const legacySeedActivityIds = new Set([
   'final-night',
 ]);
 
-const normalizeActivities = (activities: Activity[], participants: string[], likedActivityTitles = new Set<string>()): Activity[] =>
+const normalizeActivities = (
+  activities: Activity[],
+  participants: string[],
+  likedActivityTitles = new Set<string>(),
+  createdActivityUsers = new Map<string, string>(),
+): Activity[] =>
   activities.map((activity) => ({
     ...activity,
     timeslot: normalizeTimeslot(activity.timeslot),
     attendees: participants,
+    createdBy: activity.createdBy ?? createdActivityUsers.get(activity.title) ?? (legacySeedActivityIds.has(activity.id) ? 'Andi' : undefined),
     likedBy:
       legacySeedActivityIds.has(activity.id) && !likedActivityTitles.has(activity.title)
         ? []
@@ -398,6 +409,7 @@ export function App() {
       likedBy: editing.likedBy ?? [],
       booked: editing.booked ?? editing.reservationStatus === 'Gebucht',
       favorite: editing.favorite ?? false,
+      createdBy: editing.createdBy ?? currentUser ?? undefined,
     };
 
     setActivities((current) =>
@@ -420,7 +432,7 @@ export function App() {
   };
 
   const duplicateActivity = (activity: Activity) => {
-    setActivities((current) => [...current, { ...activity, id: uid(), title: `${activity.title} Kopie`, booked: false, likedBy: [] }]);
+    setActivities((current) => [...current, { ...activity, id: uid(), title: `${activity.title} Kopie`, booked: false, likedBy: [], createdBy: currentUser ?? activity.createdBy }]);
     recordHistory('Planpunkt dupliziert', activity.title);
   };
 
@@ -711,6 +723,11 @@ function ActivityCard({
             {meta.icon} {activity.category}
           </span>
           <span className="inline-time">{activity.timeRange || activity.timeslot}</span>
+          {activity.createdBy && participants.includes(activity.createdBy) && (
+            <span className="creator-chip" title={`Erstellt von ${activity.createdBy}`} aria-label={`Erstellt von ${activity.createdBy}`}>
+              <Avatar name={activity.createdBy} names={participants} />
+            </span>
+          )}
         </div>
         <button className={`icon-button ${likedByCurrentUser ? 'hot' : ''}`} title={likedByCurrentUser ? 'Like entfernen' : 'Aktivität liken'} onClick={toggleLike}>
           <Heart size={16} fill={likedByCurrentUser ? 'currentColor' : 'none'} />
