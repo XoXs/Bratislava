@@ -89,7 +89,9 @@ button {
 }
 
 .login-grid span,
-.user-pill span {
+.login-grid img,
+.user-pill span,
+.user-pill img {
   display: grid;
   place-items: center;
   width: 38px;
@@ -98,6 +100,7 @@ button {
   background: #172029;
   color: white;
   font-size: 0.78rem;
+  object-fit: cover;
 }
 
 .topbar {
@@ -168,7 +171,8 @@ h2 {
   border-left: 1px solid rgba(23, 32, 41, 0.1);
 }
 
-.trip-crew span {
+.trip-crew span,
+.trip-crew img {
   display: grid;
   place-items: center;
   width: 28px;
@@ -180,9 +184,11 @@ h2 {
   color: #172029;
   font-size: 0.65rem;
   font-weight: 900;
+  object-fit: cover;
 }
 
-.trip-crew span:first-child {
+.trip-crew span:first-child,
+.trip-crew img:first-child {
   margin-left: 0;
 }
 
@@ -365,8 +371,12 @@ h2 {
 
 .slot {
   min-height: 92px;
-  padding: 0 0 16px;
-  border-top: 0;
+  padding: 10px 0 16px;
+  border-top: 1px solid rgba(23, 32, 41, 0.06);
+}
+
+.slot + .slot {
+  margin-top: 6px;
 }
 
 .slot.drop-ready {
@@ -381,6 +391,22 @@ h2 {
   font-size: 0.6rem;
   font-weight: 900;
   text-transform: uppercase;
+}
+
+.slot-title > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 9px;
+  border: 1px solid rgba(23, 32, 41, 0.07);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.66);
+  color: #4f5d69;
+}
+
+.slot-title svg {
+  color: #258f84;
+  stroke-width: 2.6;
 }
 
 .slot-title::after {
@@ -561,8 +587,11 @@ h2 {
 }
 
 .attendees button {
+  display: grid;
+  place-items: center;
   width: 24px;
   height: 24px;
+  padding: 0;
   border: 2px solid white;
   border-radius: 50%;
   background: #e4e8ec;
@@ -570,6 +599,13 @@ h2 {
   font-size: 0.55rem;
   font-weight: 900;
   margin-left: -6px;
+}
+
+.attendees button img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .attendees button:not(.is-me) {
@@ -686,7 +722,8 @@ h2 {
   box-shadow: 0 4px 12px rgba(32, 43, 54, 0.04);
 }
 
-.history-item > span {
+.history-item > span,
+.history-item > img {
   display: grid;
   place-items: center;
   width: 34px;
@@ -696,6 +733,7 @@ h2 {
   color: white;
   font-size: 0.68rem;
   font-weight: 900;
+  object-fit: cover;
 }
 
 .history-item strong {

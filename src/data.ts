@@ -1,10 +1,11 @@
 import { Activity, Category, DayId, Timeslot } from './types';
 
 export const days: Array<{ id: DayId; label: string; short: string; accent: string }> = [
-  { id: '2026-07-09', label: 'Mittwoch, 09.07.', short: 'Mi 09.07.', accent: '#ef7d57' },
-  { id: '2026-07-10', label: 'Donnerstag, 10.07.', short: 'Do 10.07.', accent: '#34a0a4' },
-  { id: '2026-07-11', label: 'Freitag, 11.07.', short: 'Fr 11.07.', accent: '#6c8ae4' },
-  { id: '2026-07-12', label: 'Samstag, 12.07.', short: 'Sa 12.07.', accent: '#d676b8' },
+  { id: '2026-07-09', label: 'Donnerstag, 09.07.', short: 'Do 09.07.', accent: '#ef7d57' },
+  { id: '2026-07-10', label: 'Freitag, 10.07.', short: 'Fr 10.07.', accent: '#34a0a4' },
+  { id: '2026-07-11', label: 'Samstag, 11.07.', short: 'Sa 11.07.', accent: '#6c8ae4' },
+  { id: '2026-07-12', label: 'Sonntag, 12.07.', short: 'So 12.07.', accent: '#d676b8' },
+  { id: '2026-07-13', label: 'Montag, 13.07.', short: 'Mo 13.07.', accent: '#8a9a5b' },
 ];
 
 export const timeslots: Timeslot[] = ['Vormittag', 'Nachmittag', 'Abend'];

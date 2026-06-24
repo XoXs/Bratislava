@@ -18,8 +18,11 @@ import {
   Heart,
   History,
   MapPin,
+  Moon,
   Pencil,
   Plus,
+  Sun,
+  Sunrise,
   Trash2,
 } from 'lucide-react';
 import { FormEvent, useEffect, useState } from 'react';
@@ -123,6 +126,15 @@ const formatHistoryTime = (timestamp: string) =>
     minute: '2-digit',
   }).format(new Date(timestamp));
 
+const avatarByName: Record<string, string> = {
+  Andi: 'Andi.png',
+  Steffen: 'Steffen.png',
+  Niko: 'Niko.png',
+  Markus: 'Markus.png',
+  Stefan: 'Stefan.png',
+  Philipp: 'Philipp.png',
+};
+
 const getInitials = (name: string, allNames: string[] = []) => {
   const cleanName = name.trim();
   const words = cleanName.split(/\s+/).filter(Boolean);
@@ -148,6 +160,23 @@ const getInitials = (name: string, allNames: string[] = []) => {
 
   return `${cleanName[0]}${cleanName[differingIndex] ?? cleanName[1]}`.toLocaleUpperCase('de-DE');
 };
+
+function Avatar({ name, names = [] }: { name: string; names?: string[] }) {
+  const fileName = avatarByName[name];
+  const initials = getInitials(name, names);
+
+  if (!fileName) {
+    return <span title={name}>{initials}</span>;
+  }
+
+  return <img src={`${import.meta.env.BASE_URL}avatars/${fileName}`} alt={name} title={name} />;
+}
+
+const timeslotIcons = {
+  Vormittag: Sunrise,
+  Nachmittag: Sun,
+  Abend: Moon,
+} satisfies Record<Timeslot, typeof Sunrise>;
 
 export function App() {
   const stored = readStoredState();
@@ -209,6 +238,7 @@ export function App() {
       ...editing,
       id: editing.id ?? uid(),
       title: editing.title.trim(),
+      notes: '',
       attendees: participants,
       likedBy: editing.likedBy ?? [],
       booked: editing.booked ?? editing.reservationStatus === 'Gebucht',
@@ -260,14 +290,12 @@ export function App() {
         </div>
         <div className="trip-crew" aria-label="Reisegruppe">
           {participants.map((participant) => (
-            <span key={participant} title={participant}>
-              {getInitials(participant, participants)}
-            </span>
+            <Avatar key={participant} name={participant} names={participants} />
           ))}
         </div>
         <div className="top-actions">
           <div className="user-pill">
-            <span>{getInitials(currentUser, participants)}</span>
+            <Avatar name={currentUser} names={participants} />
             <strong>{currentUser}</strong>
             <ChevronDown size={13} />
           </div>
@@ -314,7 +342,7 @@ export function App() {
         </button>
       </footer>
 
-      {showHistory && <HistoryPanel history={history} />}
+      {showHistory && <HistoryPanel history={history} participants={participants} />}
 
       {editing && (
         <ActivityModal
@@ -338,7 +366,7 @@ function LoginScreen({ participants, onSelect }: { participants: string[]; onSel
         <div className="login-grid">
           {participants.map((participant) => (
             <button key={participant} onClick={() => onSelect(participant)}>
-              <span>{getInitials(participant, participants)}</span>
+              <Avatar name={participant} names={participants} />
               {participant}
             </button>
           ))}
@@ -410,6 +438,7 @@ function PlannerBoard({
             </div>
             {timeslots.map((timeslot) => {
               const slotActivities = activities.filter((activity) => activity.dayId === day.id && activity.timeslot === timeslot);
+              const TimeslotIcon = timeslotIcons[timeslot];
               return (
                 <div
                   className={`slot ${draggedId ? 'drop-ready' : ''}`}
@@ -418,7 +447,10 @@ function PlannerBoard({
                   onDrop={() => draggedId && moveActivity(draggedId, day.id, timeslot)}
                 >
                   <div className="slot-title">
-                    <span>{timeslot}</span>
+                    <span>
+                      <TimeslotIcon size={14} />
+                      {timeslot}
+                    </span>
                     <button title="Slot befüllen" onClick={() => openNewActivity(day.id, timeslot)}>
                       <Plus size={14} />
                     </button>
@@ -538,13 +570,12 @@ function ActivityCard({
                 title={`${participant} mag diese Aktivität`}
                 onClick={() => participant === currentUser && toggleLike()}
               >
-                {getInitials(participant, participants)}
+                <Avatar name={participant} names={participants} />
               </button>
             ))}
           </div>
         )}
       </div>
-      {activity.notes && <p className="note">{activity.notes}</p>}
       <div className="card-actions">
         <button title="Bearbeiten" onClick={onEdit}>
           <Pencil size={15} />
@@ -669,10 +700,6 @@ function ActivityModal({
             Beschreibung
             <textarea value={draft.description} onChange={(event) => patch({ description: event.target.value })} />
           </label>
-          <label className="wide">
-            Notizen
-            <textarea value={draft.notes} onChange={(event) => patch({ notes: event.target.value })} />
-          </label>
         </div>
         <div className="modal-info">
           Aktivitäten gelten automatisch für alle {participants.length} Teilnehmer. Likes werden danach direkt auf der Card vergeben.
@@ -685,7 +712,7 @@ function ActivityModal({
   );
 }
 
-function HistoryPanel({ history }: { history: HistoryEntry[] }) {
+function HistoryPanel({ history, participants }: { history: HistoryEntry[]; participants: string[] }) {
   return (
     <section className="panel-grid">
       <PanelHeading icon={<History />} title="History" />
@@ -693,7 +720,7 @@ function HistoryPanel({ history }: { history: HistoryEntry[] }) {
         {history.length === 0 && <p className="empty-state">Noch keine Aktionen gespeichert.</p>}
         {history.map((entry) => (
           <article className="history-item" key={entry.id}>
-            <span>{getInitials(entry.user, [])}</span>
+            <Avatar name={entry.user} names={participants} />
             <div>
               <strong>{entry.action}</strong>
               <p>{entry.detail}</p>
